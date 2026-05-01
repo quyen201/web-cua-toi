@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Sách lật Cô Bé Quàng Khăn Đỏ</title>
+    <style>
+        body { margin: 0; background: #fce4ec; display: flex; justify-content: center; align-items: center; height: 100vh; font-family: 'Arial', sans-serif; }
+        .book { width: 450px; height: 600px; position: relative; perspective: 2000px; }
+        .page { width: 100%; height: 100%; position: absolute; background: white; border-radius: 0 15px 15px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transform-origin: left; transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1); backface-visibility: hidden; padding: 25px; box-sizing: border-box; display: flex; flex-direction: column; border-left: 1px solid #ddd; }
+        .page img { width: 100%; height: 320px; object-fit: cover; border-radius: 10px; border: 1px solid #eee; }
+        h2 { text-align: center; color: #d32f2f; margin: 10px 0; font-size: 22px; }
+        p { font-size: 16px; line-height: 1.6; color: #333; flex-grow: 1; margin-top: 15px; }
+        .controls { display: flex; justify-content: space-between; margin-top: auto; }
+        button { padding: 10px 20px; background: #ff4081; color: white; border: none; border-radius: 25px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        button:hover { background: #e91e63; transform: scale(1.05); }
+        .flipped { transform: rotateY(-180deg); }
+    </style>
+</head>
+<body>
+
+<div class="book">
+    <!-- Trang 1 -->
+    <div class="page" id="p1" style="z-index:7;">
+        <h2>Cô bé xinh xắn</h2>
+        <img src="image_4a4098.jpg">
+        <p>Ngày xửa ngày xưa, có một cô bé dễ thương được bà tặng chiếc khăn quàng đỏ thắm. Cô bé yêu nó đến mức diện suốt ngày, nên ai cũng gọi là Khăn Đỏ.</p>
+        <div class="controls"><span></span><button onclick="next(1)">Mở sách ➡</button></div>
+    </div>
+
+    <!-- Trang 2 -->
+    <div class="page" id="p2" style="z-index:6;">
+        <h2>Mẹ dặn dò</h2>
+        <img src="image_4a405f.jpg">
+        <p>Mẹ bảo Khăn Đỏ mang bánh biếu bà ngoại đang ốm. Mẹ dặn kỹ: "Con đi đường chính, đừng la cà vào rừng kẻo gặp Sói dữ ăn thịt đấy!"</p>
+        <div class="controls"><button onclick="prev(2)">⬅ Quay lại</button><button onclick="next(2)">Tiếp theo ➡</button></div>
+    </div>
+
+    <!-- Trang 3 -->
+    <div class="page" id="p3" style="z-index:5;">
+        <h2>Gặp Sói gian ác</h2>
+        <img src="image_4a4039.jpg">
+        <p>Trong rừng, Khăn Đỏ gặp Sói. Sói giả vờ thân thiện, lừa cô bé đi hái hoa để nó lẻn đến nhà bà trước nhằm thực hiện âm mưu xấu xa.</p>
+        <div class="controls"><button onclick="prev(3)">⬅ Quay lại</button><button onclick="next(3)">Tiếp theo ➡</button></div>
+    </div>
+
+    <!-- Trang 4 -->
+    <div class="page" id="p4" style="z-index:4;">
+        <h2>Sói giả dạng bà</h2>
+        <img src="image_49ee9f.jpg">
+        <p>Sói đến nhà bà, nuốt chửng bà rồi mặc quần áo, đội mũ của bà và nằm trên giường chờ đợi cô bé quàng khăn đỏ tội nghiệp đến.</p>
+        <div class="controls"><button onclick="prev(4)">⬅ Quay lại</button><button onclick="next(4)">Tiếp theo ➡</button></div>
+    </div>
+
+    <!-- Trang 5 -->
+    <div class="page" id="p5" style="z-index:3;">
+        <h2>Sự thật phơi bày</h2>
+        <img src="image_49ee7e.jpg">
+        <p>Thấy bà lạ quá, Khăn Đỏ hỏi: "Bà ơi sao miệng bà to thế?". Sói quát: "Để ăn thịt cháu đấy!" và chồm lên nuốt chửng cô bé vào bụng.</p>
+        <div class="controls"><button onclick="prev(5)">⬅ Quay lại</button><button onclick="next(5)">Tiếp theo ➡</button></div>
+    </div>
+
+    <!-- Trang 6 -->
+    <div class="page" id="p6" style="z-index:2;">
+        <h2>Bác thợ săn tốt bụng</h2>
+        <img src="image_49ee43.jpg">
+        <p>May thay, bác thợ săn đi ngang qua đã kịp thời cứu hai bà cháu. Khăn Đỏ hứa từ nay sẽ luôn nghe lời mẹ, không tin người lạ nữa.</p>
+        <div class="controls"><button onclick="prev(6)">⬅ Quay lại</button><button onclick="next(6)">Kết thúc ➡</button></div>
+    </div>
+
+    <!-- Trang 7 (Trang cuối) -->
+    <div class="page" id="p7" style="z-index:1;">
+        <h2>BÀI HỌC Ý NGHĨA</h2>
+        <div style="text-align: center; font-size: 60px; margin-top: 50px;">🍎</div>
+        <p style="text-align: center; font-weight: bold;">Luôn vâng lời cha mẹ,<br>cẩn thận với người lạ<br>để bảo vệ bản thân mình bé nhé!</p>
+        <div class="controls"><button onclick="prev(7)">⬅ Đọc lại từ đầu</button></div>
+    </div>
+</div>
+
+<script>
+    function next(n) {
+        const page = document.getElementById("p" + n);
+        page.classList.add("flipped");
+        setTimeout(() => { page.style.zIndex = n; }, 500);
+    }
+    function prev(n) {
+        const prevPage = document.getElementById("p" + (n - 1));
+        prevPage.classList.remove("flipped");
+        prevPage.style.zIndex = (8 - n + 1);
+    }
+</script>
+
+</body>
+</html>
