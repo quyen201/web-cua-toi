@@ -1,92 +1,293 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <title>Sách lật Cô Bé Quàng Khăn Đỏ</title>
-    <style>
-        body { margin: 0; background: #fce4ec; display: flex; justify-content: center; align-items: center; height: 100vh; font-family: 'Arial', sans-serif; }
-        .book { width: 450px; height: 600px; position: relative; perspective: 2000px; }
-        .page { width: 100%; height: 100%; position: absolute; background: white; border-radius: 0 15px 15px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transform-origin: left; transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1); backface-visibility: hidden; padding: 25px; box-sizing: border-box; display: flex; flex-direction: column; border-left: 1px solid #ddd; }
-        .page img { width: 100%; height: 320px; object-fit: cover; border-radius: 10px; border: 1px solid #eee; }
-        h2 { text-align: center; color: #d32f2f; margin: 10px 0; font-size: 22px; }
-        p { font-size: 16px; line-height: 1.6; color: #333; flex-grow: 1; margin-top: 15px; }
-        .controls { display: flex; justify-content: space-between; margin-top: auto; }
-        button { padding: 10px 20px; background: #ff4081; color: white; border: none; border-radius: 25px; cursor: pointer; font-weight: bold; transition: 0.3s; }
-        button:hover { background: #e91e63; transform: scale(1.05); }
-        .flipped { transform: rotateY(-180deg); }
-    </style>
+<meta charset="UTF-8">
+<title>Sách lật: Cáo, Thỏ và Gà Trống</title>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/page-flip/dist/css/page-flip.css">
+
+<style>
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #fff3b0, #95d5b2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial;
+}
+
+.wrapper { text-align: center; }
+
+#book { margin: auto; }
+
+.page {
+    background: #fffdf2;
+    border: 1px solid #d8c7a3;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.cover { background: #ffe066; }
+
+h1, h2 { text-align: center; }
+
+h1 {
+    color: #b23a48;
+    font-size: 30px;
+}
+
+h2 {
+    color: #2d6a4f;
+    font-size: 21px;
+}
+
+video {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    border-radius: 12px;
+    background: black;
+}
+
+p {
+    text-align: justify;
+    font-size: 16px;
+    line-height: 1.55;
+}
+
+.controls {
+    width: 920px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+button {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    background: #40916c;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover { background: #1b4332; }
+</style>
 </head>
+
 <body>
 
-<div class="book">
-    <!-- Trang 1 -->
-    <div class="page" id="p1" style="z-index:7;">
-        <h2>Cô bé xinh xắn</h2>
-        <img src="image_4a4098.jpg">
-        <p>Ngày xửa ngày xưa, có một cô bé dễ thương được bà tặng chiếc khăn quàng đỏ thắm. Cô bé yêu nó đến mức diện suốt ngày, nên ai cũng gọi là Khăn Đỏ.</p>
-        <div class="controls"><span></span><button onclick="next(1)">Mở sách ➡</button></div>
+<div class="wrapper">
+
+<div id="book">
+
+    <div class="page cover">
+        <h1>CÁO, THỎ VÀ GÀ TRỐNG</h1>
+        <video src="cao_tho_ga_bia.mp4" muted playsinline></video>
+        <p style="text-align:center;">Câu chuyện về lòng dũng cảm, tình bạn và sự thông minh.</p>
     </div>
 
-    <!-- Trang 2 -->
-    <div class="page" id="p2" style="z-index:6;">
-        <h2>Mẹ dặn dò</h2>
-        <img src="image_4a405f.jpg">
-        <p>Mẹ bảo Khăn Đỏ mang bánh biếu bà ngoại đang ốm. Mẹ dặn kỹ: "Con đi đường chính, đừng la cà vào rừng kẻo gặp Sói dữ ăn thịt đấy!"</p>
-        <div class="controls"><button onclick="prev(2)">⬅ Quay lại</button><button onclick="next(2)">Tiếp theo ➡</button></div>
+    <div class="page">
+        <h2>1. Hai ngôi nhà trong rừng</h2>
+        <video src="cao_tho_ga_1.mp4" muted playsinline></video>
+        <p>Ngày xửa ngày xưa, trong một khu rừng nọ có Cáo và Thỏ. Cáo có một ngôi nhà bằng băng lấp lánh, còn Thỏ có một ngôi nhà bằng gỗ ấm áp.</p>
     </div>
 
-    <!-- Trang 3 -->
-    <div class="page" id="p3" style="z-index:5;">
-        <h2>Gặp Sói gian ác</h2>
-        <img src="image_4a4039.jpg">
-        <p>Trong rừng, Khăn Đỏ gặp Sói. Sói giả vờ thân thiện, lừa cô bé đi hái hoa để nó lẻn đến nhà bà trước nhằm thực hiện âm mưu xấu xa.</p>
-        <div class="controls"><button onclick="prev(3)">⬅ Quay lại</button><button onclick="next(3)">Tiếp theo ➡</button></div>
+    <div class="page">
+        <h2>2. Nhà Cáo tan chảy</h2>
+        <video src="cao_tho_ga_2.mp4" muted playsinline></video>
+        <p>Mùa xuân đến, ánh nắng mặt trời làm ngôi nhà bằng băng của Cáo tan ra thành nước. Cáo buồn bã vì không còn chỗ ở.</p>
     </div>
 
-    <!-- Trang 4 -->
-    <div class="page" id="p4" style="z-index:4;">
-        <h2>Sói giả dạng bà</h2>
-        <img src="image_49ee9f.jpg">
-        <p>Sói đến nhà bà, nuốt chửng bà rồi mặc quần áo, đội mũ của bà và nằm trên giường chờ đợi cô bé quàng khăn đỏ tội nghiệp đến.</p>
-        <div class="controls"><button onclick="prev(4)">⬅ Quay lại</button><button onclick="next(4)">Tiếp theo ➡</button></div>
+    <div class="page">
+        <h2>3. Cáo xin ở nhờ</h2>
+        <video src="cao_tho_ga_3.mp4" muted playsinline></video>
+        <p>Cáo đến gõ cửa nhà Thỏ và xin vào sưởi nhờ. Thỏ tốt bụng liền mở cửa cho Cáo vào nhà.</p>
     </div>
 
-    <!-- Trang 5 -->
-    <div class="page" id="p5" style="z-index:3;">
-        <h2>Sự thật phơi bày</h2>
-        <img src="image_49ee7e.jpg">
-        <p>Thấy bà lạ quá, Khăn Đỏ hỏi: "Bà ơi sao miệng bà to thế?". Sói quát: "Để ăn thịt cháu đấy!" và chồm lên nuốt chửng cô bé vào bụng.</p>
-        <div class="controls"><button onclick="prev(5)">⬅ Quay lại</button><button onclick="next(5)">Tiếp theo ➡</button></div>
+    <div class="page">
+        <h2>4. Cáo đuổi Thỏ ra ngoài</h2>
+        <video src="cao_tho_ga_4.mp4" muted playsinline></video>
+        <p>Sau khi vào nhà, Cáo trở nên hung dữ và đuổi Thỏ ra khỏi chính ngôi nhà của mình. Thỏ sợ hãi vừa đi vừa khóc.</p>
     </div>
 
-    <!-- Trang 6 -->
-    <div class="page" id="p6" style="z-index:2;">
-        <h2>Bác thợ săn tốt bụng</h2>
-        <img src="image_49ee43.jpg">
-        <p>May thay, bác thợ săn đi ngang qua đã kịp thời cứu hai bà cháu. Khăn Đỏ hứa từ nay sẽ luôn nghe lời mẹ, không tin người lạ nữa.</p>
-        <div class="controls"><button onclick="prev(6)">⬅ Quay lại</button><button onclick="next(6)">Kết thúc ➡</button></div>
+    <div class="page">
+        <h2>5. Bầy Chó giúp Thỏ</h2>
+        <video src="cao_tho_ga_5.mp4" muted playsinline></video>
+        <p>Thỏ gặp bầy Chó và kể lại mọi chuyện. Bầy Chó liền cùng Thỏ quay về nhà, sủa vang đòi Cáo trả nhà.</p>
     </div>
 
-    <!-- Trang 7 (Trang cuối) -->
-    <div class="page" id="p7" style="z-index:1;">
-        <h2>BÀI HỌC Ý NGHĨA</h2>
-        <div style="text-align: center; font-size: 60px; margin-top: 50px;">🍎</div>
-        <p style="text-align: center; font-weight: bold;">Luôn vâng lời cha mẹ,<br>cẩn thận với người lạ<br>để bảo vệ bản thân mình bé nhé!</p>
-        <div class="controls"><button onclick="prev(7)">⬅ Đọc lại từ đầu</button></div>
+    <div class="page">
+        <h2>6. Cáo dọa bầy Chó</h2>
+        <video src="cao_tho_ga_6.mp4" muted playsinline></video>
+        <p>Cáo ngồi trong nhà, hung dữ hét vọng ra khiến bầy Chó sợ hãi bỏ chạy. Thỏ lại ngồi dưới bụi cây và khóc.</p>
     </div>
+
+    <div class="page">
+        <h2>7. Bác Gấu xuất hiện</h2>
+        <video src="cao_tho_ga_7.mp4" muted playsinline></video>
+        <p>Một bác Gấu đi ngang qua, thấy Thỏ khóc liền hỏi thăm. Nghe chuyện, Gấu mạnh mẽ nói sẽ giúp Thỏ đuổi Cáo.</p>
+    </div>
+
+    <div class="page">
+        <h2>8. Gấu cũng thất bại</h2>
+        <video src="cao_tho_ga_8.mp4" muted playsinline></video>
+        <p>Gấu đến trước nhà và gầm lớn yêu cầu Cáo trả nhà. Nhưng Cáo lại hét lên dọa nạt khiến Gấu cũng sợ hãi bỏ chạy.</p>
+    </div>
+
+    <div class="page">
+        <h2>9. Gà Trống mào đỏ</h2>
+        <video src="cao_tho_ga_9.mp4" muted playsinline></video>
+        <p>Khi Thỏ đang buồn bã, Gà Trống mào đỏ đi ngang qua, vai vác chiếc hái. Gà Trống tự tin nói sẽ giúp Thỏ.</p>
+    </div>
+
+    <div class="page">
+        <h2>10. Gà Trống cất tiếng hát</h2>
+        <video src="cao_tho_ga_10.mp4" muted playsinline></video>
+        <p>Gà Trống và Thỏ cùng trở về nhà. Đứng trước cửa, Gà Trống cất tiếng hát vang khiến Cáo bắt đầu run sợ.</p>
+    </div>
+
+    <div class="page">
+        <h2>11. Cáo sợ hãi bỏ chạy</h2>
+        <video src="cao_tho_ga_11.mp4" muted playsinline></video>
+        <p>Gà Trống quát vang, Cáo hoảng hốt nhảy vọt ra khỏi nhà và chạy biến vào rừng.</p>
+    </div>
+
+    <div class="page">
+        <h2>12. Thỏ lấy lại ngôi nhà</h2>
+        <video src="cao_tho_ga_12.mp4" muted playsinline></video>
+        <p>Từ đó, Thỏ được trở về sống trong ngôi nhà của mình. Thỏ vô cùng biết ơn Gà Trống.</p>
+    </div>
+
+    <div class="page">
+        <h2>13. Bài học về tình bạn</h2>
+        <video src="cao_tho_ga_13.mp4" muted playsinline></video>
+        <p>Thỏ hiểu rằng trong lúc khó khăn, một người bạn tốt và lòng can đảm quý giá hơn sức mạnh. Từ đó, Thỏ và Gà Trống trở thành đôi bạn thân thiết.</p>
+    </div>
+
 </div>
 
+<div class="controls">
+    <button onclick="prev()">⬅</button>
+    <button onclick="play()">🔊</button>
+    <button onclick="stop()">⏹</button>
+    <button onclick="next()">➡</button>
+</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.min.js"></script>
+
 <script>
-    function next(n) {
-        const page = document.getElementById("p" + n);
-        page.classList.add("flipped");
-        setTimeout(() => { page.style.zIndex = n; }, 500);
+const audioList = [
+    "audio_0.mp3",
+    "audio_1.mp3",
+    "audio_2.mp3",
+    "audio_3.mp3",
+    "audio_4.mp3",
+    "audio_5.mp3",
+    "audio_6.mp3",
+    "audio_7.mp3",
+    "audio_8.mp3",
+    "audio_9.mp3",
+    "audio_10.mp3",
+    "audio_11.mp3",
+    "audio_12.mp3",
+    "audio_13.mp3"
+];
+
+let audio = new Audio();
+
+const flip = new St.PageFlip(document.getElementById("book"), {
+    width: 460,
+    height: 650,
+    showCover: true,
+    usePortrait: false,
+    flippingTime: 1200
+});
+
+flip.loadFromHTML(document.querySelectorAll(".page"));
+
+function stop() {
+    audio.pause();
+    audio.currentTime = 0;
+
+    document.querySelectorAll("video").forEach(v => {
+        v.pause();
+        v.currentTime = 0;
+    });
+}
+
+function playVideo(i) {
+    const videos = document.querySelectorAll("video");
+    videos.forEach(v => {
+        v.pause();
+        v.currentTime = 0;
+    });
+
+    if (videos[i]) {
+        videos[i].currentTime = 0;
+        videos[i].play();
     }
-    function prev(n) {
-        const prevPage = document.getElementById("p" + (n - 1));
-        prevPage.classList.remove("flipped");
-        prevPage.style.zIndex = (8 - n + 1);
+}
+
+function playOne(i, callback) {
+    if (!audioList[i]) return;
+
+    stop();
+
+    playVideo(i);
+
+    audio = new Audio(audioList[i]);
+
+    audio.onended = function() {
+        if (callback) callback();
+    };
+
+    audio.play();
+}
+
+function playSpread() {
+    let current = flip.getCurrentPageIndex();
+
+    if (current === 0) {
+        playOne(0);
+        return;
     }
+
+    let left = current % 2 === 0 ? current - 1 : current;
+    let right = left + 1;
+
+    playOne(left, function() {
+        setTimeout(() => {
+            playOne(right);
+        }, 400);
+    });
+}
+
+function play() {
+    playSpread();
+}
+
+function next() {
+    flip.flipNext();
+}
+
+function prev() {
+    flip.flipPrev();
+}
+
+flip.on("flip", function() {
+    setTimeout(() => {
+        playSpread();
+    }, 400);
+});
+
+window.onload = function() {
+    playOne(0);
+};
 </script>
 
 </body>
